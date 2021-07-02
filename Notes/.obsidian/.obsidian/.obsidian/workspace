@@ -1,0 +1,113 @@
+{
+  "main": {
+    "id": "ec33b86f6d3b99b5",
+    "type": "split",
+    "children": [
+      {
+        "id": "042a59df691a3754",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Chapters/Chapter 7.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5e87f136a66003b3",
+    "type": "split",
+    "children": [
+      {
+        "id": "ba8dd3b57b9d5f9b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "54b0cbd8fa7d9022",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "77f6209da059241b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 243
+  },
+  "right": {
+    "id": "dda36345c3825039",
+    "type": "split",
+    "children": [
+      {
+        "id": "ee2107115bd2de27",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a2a550a03a9d656e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Chapters/Chapter 7.md",
+                "collapseAll": false,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "d97832caf8a8ca2b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "042a59df691a3754",
+  "lastOpenFiles": [
+    "Chapters/Chapter 7.md",
+    "Chapters/Chapter 6.md",
+    "Chapters/Chapter 2.md",
+    "Chapters/Chapter 3.md",
+    "Chapters/Chapter 4.md",
+    "Chapters/Chapter 5.md",
+    "General.md",
+    "Untitled.md",
+    "Misc.md",
+    "Chapters/Pasted image 20210505142416.png"
+  ]
+}
