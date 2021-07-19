@@ -1,0 +1,19 @@
+{
+  "spellcheck": true,
+  "showFrontmatter": true,
+  "foldHeading": true,
+  "foldIndent": true,
+  "showLineNumber": true,
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "./",
+  "vimMode": false,
+  "strictLineBreaks": false,
+  "newLinkFormat": "absolute",
+  "useMarkdownLinks": true
+}

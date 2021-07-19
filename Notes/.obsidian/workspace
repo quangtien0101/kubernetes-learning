@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "4a1efbe8129ceae0",
+        "id": "703739967bed328b",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Concepts & Basics/02 - Kubernetes components & principles of operation.md",
+            "file": "Commands.md",
             "mode": "source"
           }
         }
@@ -52,8 +52,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 302.5,
-    "collapsed": true
+    "width": 302.5
   },
   "right": {
     "id": "dda36345c3825039",
@@ -69,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Concepts & Basics/02 - Kubernetes components & principles of operation.md",
+                "file": "Commands.md",
                 "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -99,17 +98,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "4a1efbe8129ceae0",
+  "active": "703739967bed328b",
   "lastOpenFiles": [
-    "Concepts & Basics/02 - Kubernetes components & principles of operation.md",
-    "Concepts & Basics/Pasted image 20210702113723.png",
-    "Concepts & Basics/Pasted image 20210702112706.png",
-    "Concepts & Basics/Pasted image 20210701115847.png",
-    "Concepts & Basics/Pasted image 20210701115502.png",
-    "Concepts & Basics/Pasted image 20210701115323.png",
+    "Commands.md",
+    "Concepts & Basics/05 - Kubernetes deployments.md",
+    "Concepts & Basics/04 - Working with Pods.md",
+    "Concepts & Basics/03 - Install kubernetes.md",
     "Untitled.md",
-    "Concepts & Basics/Pasted image 20210701114355.png",
-    "Concepts & Basics/Pasted image 20210701111941.png",
-    "Concepts & Basics/Nodes.png"
+    "Concepts & Basics/Pasted image 20210719152614.png",
+    "Concepts & Basics/Pasted image 20210719152152.png",
+    "Concepts & Basics/Pasted image 20210719144449.png",
+    "Concepts & Basics/Pasted image 20210719114723.png",
+    "03 - Install kubernetes.md"
   ]
 }
