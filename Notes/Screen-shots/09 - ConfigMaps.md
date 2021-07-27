@@ -173,3 +173,85 @@ The previous YAML file inserts a pipe character (`|`) after the name of the entr
 $ kubectl apply -f singlemap.yml
 configmap/test-conf created
 ```
+
+```bash
+$ kubectl describe configmap test-conf
+Name:         test-conf
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+test.conf:
+----
+env = plex-test
+endpoint = 0.0.0.0:31001
+char = utf8
+vault = PLEX/test
+log-size = 512M
+
+Events:  <none>
+```
+
+ConfigMaps are extremely flexible and can be used to insert complex configuration files such as JSON files and even scripts into containers at runtime.
+
+## Injecting ConfigMap data into Pods and containers
+You've seen how to imperatively and declaratively create ConfigMap objects and populated them with data, Now let's see how to get that data into applications running in containers.
+
+There are 3 main ways to inject ConfigMap data into a container:
+- As environment variables
+- As arguments to container startup commands
+- As files in a volume
+
+### ConfigMaps and environment variables
+
+A common way to get ConfigMap data into a container is via environment variables. You create the ConfigMap, then you map its entries into environment variables in the container section of a Pod template. When the container is started, the environment variables appear in the container as standard Linux or Windows environment variables.
+
+![](Screen-shots/env%20variable%20in%20configmap.png)
+
+The following Pod manifest deploys a single container that creates 2 environment variables in the container
+- FIRSTNAME: Maps to the `given` entry in the `multimap` ConfigMap
+- LASTNAME: Maps to the `family` entry in the `multimap` ConfigMap
+
+
+`envpod.yml` file:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    chapter: configmaps
+  name: envpod
+spec:
+  containers:
+    - name: ctr1
+      image: busybox
+      command: ["sleep"]
+      args: ["infinity"]
+      env:
+        - name: FIRSTNAME
+          valueFrom:
+            configMapKeyRef:
+              name: multimap
+              key: given
+        - name: LASTNAME
+          valueFrom:
+            configMapKeyRef:
+              name: multimap
+              key: family
+```
+
+```bash
+$ kubectl apply -f envpod.yml
+pod/envpod created
+```
+
+```bash
+$ kubectl exec envpod -- env | grep NAME
+HOSTNAME=envpod
+FIRSTNAME=Nigel
+LASTNAME=Poulton
+```
+
+A drawback to using ConfigMaps with environment variables is that environment variables are static. This means that any updates you make to the values in the ConfigMap will not be reflected in running containers. For example, if you update the given and family values in the ConfigMap, environment variables in existing containers will not get the updates.
