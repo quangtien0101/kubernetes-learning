@@ -254,4 +254,126 @@ FIRSTNAME=Nigel
 LASTNAME=Poulton
 ```
 
-A drawback to using ConfigMaps with environment variables is that environment variables are static. This means that any updates you make to the values in the ConfigMap will not be reflected in running containers. For example, if you update the given and family values in the ConfigMap, environment variables in existing containers will not get the updates.
+A drawback to using ConfigMaps with environment variables is that environment variables are static. This means that any updates you make to the values in the ConfigMap will not be reflected in running containers. For example, if you update the `given` and `family` values in the ConfigMap, environment variables in existing containers will not get the updates.
+
+
+### ConfigMaps and container startup commands
+The concept of using ConfigMaps with container startup commands is simple. The high-level looks like this. It's possible to specify a startup command for a container, and you can customize that startup command with variables. Let's look at a simple example ...
+
+```yml
+spec:
+	containers:
+		- name: args1
+		image: busybox
+		command: [ "/bin/sh", "-c", "echo First name $(FIRSTNAME) last name $(LASTNAME)" ]
+		env:
+			- name: FIRSTNAME
+			  valueFrom:
+				configMapKeyRef:
+					name: multimap
+					key: given
+			- name: LASTNAME
+			  valueFrom:
+				ConfigMapKeyRef:
+					name: multimap
+					key: family
+```
+
+The startup command it references 2 variables; `FIRSTNAME` and `LASTNAME`. 
+
+![](Screen-shots/relationship%20startup%20command%20configmap.png)
+
+Running a Pod based on the previous `YAML` will print "First name Nigel last name Poulton" to the container's log file.
+
+You can see the logs of the container with command `$kubectl logs <pod-name> -c args1`
+
+```bash
+$ kubectl logs start-up -c args1
+First name Nigel last name Poulton
+```
+
+```bash
+$ kubectl describe pod start-up                                                                                                                                                                                 
+Name:         start-up                                                                                                                                                                                             
+Namespace:    default                                                                                                                                                                                        
+<snip>
+    Command:
+      /bin/sh
+      -c
+      echo First name $(FIRSTNAME) last name $(LASTNAME)
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Tue, 27 Jul 2021 15:31:55 +0700
+      Finished:     Tue, 27 Jul 2021 15:31:55 +0700
+    Ready:          False
+    Restart Count:  3
+    Environment:
+      FIRSTNAME:  <set to the key 'given' of config map 'multimap'>   Optional: false
+      LASTNAME:   <set to the key 'family' of config map 'multimap'>  Optional: false
+<snip>
+```
+
+Use the ConfigMaps with container startup commands suffers from the same limitations as using them with environment variables - updates to entries in the map will not be reflected in running containers.
+
+### ConfigMaps and volumes
+Using ConfigMaps with volumes is the most flexible option. You can reference entire configuration files as well as make updates to the ConfigMap and have them reflected in running containers. This means you can make changes to entries in a ConfigMap after you've deployed a container, and those changes be seen in the container and available for running applications.
+
+The high-level process for exposing ConfigMap data via a volume looks like this
+1. Create the ConfigMap
+2. Create a ConfigMap volume in the Pod template
+3. Mount the ConfigMap volume into the container
+4. Entries in the ConfigMap will appear in the container as individual files.
+
+![](Screen-shots/configmap%20with%20volume.png)
+
+The following YAML creates a Pod called `cmvol` with the following configuration.
+- `spec.volumes` creates a volume called **volmap** based on the **multimap** ConfigMap
+- `spec.containers.volumeMounts` mounts the **volmap** volume to `/etc/name`
+
+`cmpod.yml` file
+```yml
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: cmvol
+spec:
+  volumes:
+    - name: volmap
+      configMap:
+        name: multimap
+
+  containers:
+    - name: container-ctr
+      image: nginx
+      volumeMounts:
+        - mountPath: /etc/name
+          name: volmap 
+```
+
+The `spec.volumes` block creates a special type of volume called a ConfigMap volume. The volume is called volmap and based on the `multimap` ConfigMap. This means that the volume will be populated with the entries stored in the data block of the ConfigMap.
+
+In this example, the volume will have two files; `given` and `family`. The given file will have the contents Nigel, and the family file will have the contents Poulton.
+
+The `spec.containers` block mounts the `volmap` volume into the container at `/etc/name`. This means that 2 files will appear in the container as:
+- `/etc/name/given`
+- `/etc/name/family`
+
+
+```bash
+$ kubectl apply -f cmpod.yml                   
+pod/cmvol created
+
+$ kubectl exec cmvol -- ls /etc/name
+family
+given
+```
+
+## Chapter Summary
+ConfigMaps are the mechanism that Kubernetes provides for decoupling applications and their configuration.
+
+ConfigMaps are first-class object in the Kubernetes API and can be created and manipulated with the usual `kubectl create, kubectl get` and `kubectl describe` commands. They're ideal for storing application configuration parameters as well as entire configuration files, but they shouldn't be used to store sensitive data.
+
+ConfigMap data gets injectd into containers at run-time, and you can inject data via environment variables, container startup commands, and volumes. The volumes method is the most flexible as it allows you work with entire configuration files. It also updates to eventually be reflected already-running containers.
