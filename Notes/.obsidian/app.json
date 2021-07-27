@@ -12,8 +12,9 @@
   },
   "alwaysUpdateLinks": true,
   "attachmentFolderPath": "./",
-  "vimMode": false,
+  "vimMode": true,
   "strictLineBreaks": false,
   "newLinkFormat": "absolute",
-  "useMarkdownLinks": true
+  "useMarkdownLinks": true,
+  "readableLineLength": true
 }

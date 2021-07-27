@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "864b031521554686",
+        "id": "4a1efbe8129ceae0",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Concepts & Basics/07 - Service discovery.md",
+            "file": "Screen-shots/09 - ConfigMaps.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Concepts & Basics/07 - Service discovery.md",
+                "file": "Screen-shots/09 - ConfigMaps.md",
                 "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -89,26 +89,42 @@
                 "useHierarchy": true
               }
             }
+          },
+          {
+            "id": "066b03b82d7f2481",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "8a7b579f88ec620f",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
     "width": 300,
     "collapsed": true
   },
-  "active": "864b031521554686",
+  "active": "4a1efbe8129ceae0",
   "lastOpenFiles": [
-    "Concepts & Basics/07 - Service discovery.md",
-    "00 - Quick Commands reference.md",
-    "Commands.md",
-    "Concepts & Basics/Pasted image 20210721164656.png",
-    "Concepts & Basics/Pasted image 20210721163035.png",
-    "07 - Service discovery.md",
-    "Concepts & Basics/06 - Kubernetes service.md",
-    "Concepts & Basics/04 - Working with Pods.md",
-    "Concepts & Basics/02 - Kubernetes components & principles of operation.md",
-    "Pasted image 20210721161931.png"
+    "09 - ConfigMaps.md",
+    "Windows/Windows Fundametal/05 - NTFS vs Shares Permissions.md",
+    "Windows/Windows Fundametal/03 - File System.md",
+    "Windows/Windows Fundametal/04 - Windows Services & Processes.md",
+    "Windows/Windows Fundametal/01-Introduction to Windows.md",
+    "Windows/Windows Fundametal/02-Operating System Structure.md",
+    "Windows/Windows Fundametal/04-Windows Services & Processes.md",
+    "Pasted image 20210723233632.png",
+    "Untitled.md",
+    "Temp.md"
   ]
 }

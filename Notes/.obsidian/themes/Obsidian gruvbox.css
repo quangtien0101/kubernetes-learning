@@ -10,6 +10,8 @@
     --dark4:          #7c6f64;
 
     --gray:           #928374;
+	--dark-blue:	  #141d2b;
+	--teal:			  #9fef00;
 
     --light0-hard:    #f9f5d7;
     --light0:         #fbf1c7;
@@ -73,8 +75,8 @@
     --background-modifier-border: var(--dark2);
     --text-accent:                var(--bright-orange);
     --interactive-accent-rgb:     var(--bright-orange);
-    --inline-code:                var(--bright-red);
-    --code-block:                 var(--bright-red);
+    --inline-code:                var(--teal);
+    --code-block:                 var(--teal);
     --vim-cursor:                 var(--bright-blue);
     --text-selection:             rgba(168, 153, 132, 0.5); /* light4 */
 }
@@ -146,7 +148,7 @@ body
 
 strong
 {
-    font-weight: 600 !important;
+    font-weight: 900 !important;
 }
 
 a,

@@ -15,6 +15,7 @@ kubectl get nodes
 minikube status
 ```
 
+
 ## Deploying service, pods, deployments
 ```bash
 kubectl apply -f pod.yml
@@ -36,6 +37,13 @@ kubectl apply -f deploy.yml
 kubectl apply -f service.yml 
 ```
 
+```bash
+kubectl get pv
+```
+
+```bash
+kubectl get pvc
+```
 ## Tunneling traffic
 Allow minikube to route the traffic from the host machine to all the pods
 ```bash
